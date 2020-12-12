@@ -155,6 +155,14 @@ abstract class AbstractRelationFieldViewHelper extends AbstractMultiValueFieldVi
             false,
             ''
         );
+        $this->registerArgument(
+            'renderType',
+            'string',
+            'Render type (TCA renderType) - required on TYPO3 9.5 and above. Render type must be registered as FormEngine node type. '
+            . 'See https://docs.typo3.org/m/typo3/reference-coreapi/master/en-us/ApiOverview/FormEngine/Rendering/Index.html',
+            false,
+            'selectSingle'
+        );
     }
 
     /**
@@ -197,6 +205,7 @@ abstract class AbstractRelationFieldViewHelper extends AbstractMultiValueFieldVi
         $component->setMatchFields((array) $arguments['matchFields']);
         $component->setOppositeField($arguments['oppositeField']);
         $component->setEmptyOption($arguments['emptyOption']);
+        $component->setRenderType( $arguments['renderType'] );
         return $component;
     }
 }
